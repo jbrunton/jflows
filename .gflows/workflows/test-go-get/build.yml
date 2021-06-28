@@ -1,0 +1,14 @@
+#@ load("workflows.lib.yml", "pull_request_defaults")
+#@ load("steps.lib.yml", "setup_go")
+
+name: build
+
+"on": #@ pull_request_defaults()
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - #@ setup_go()
+    - run: go get github.com/jbrunton/gflows
+    - run: gflows version
